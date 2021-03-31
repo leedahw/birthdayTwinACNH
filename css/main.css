@@ -1,0 +1,148 @@
+@font-face {
+  font-family: acnh;
+  src: url(../fonts/humming.otf);
+}
+
+html {
+  font-size: 16px;
+} 
+
+body {
+  /* background-image: url(../images/bg.png); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+  color: #3e3e3e;
+  height: 100vh;
+}
+
+button {
+  border:none;
+  outline: none;
+  background-color: transparent;
+}
+
+
+/* FONT */
+.acnh-font {
+  font-family: acnh;
+}
+
+/* COLOR RELATED */
+
+.bg-darkgreen {
+  background-color: #72a88c;
+}
+
+.bg-lightgreen {
+  background-color: #99d8b1;
+}
+
+.bg-beige {
+  background-color: #eef6ec;
+}
+
+.bg-yellow {
+  background-color: #ffde9d;
+}
+
+.bg-white {
+  background-color: white;
+}
+.white {
+  color: white;
+}
+
+
+
+
+
+#header > span > a {
+  text-decoration: none;
+}
+
+#title-main {
+  font-family: acnh;
+}
+
+#about {
+  border-top-right-radius: 28px;
+  border-top-left-radius: 28px;
+}
+
+#about > div {
+  border-top-right-radius: 28px;
+  border-top-left-radius: 28px;
+  position: relative;
+  top: 0px;
+}
+
+#villagerimages {
+  width: 100%;
+}
+
+#menu-buttons > div > div {
+  border-top-right-radius: 28px;
+  border-top-left-radius: 28px;
+}
+
+#nodatesnote > div > div {
+  border-top-right-radius: 28px;
+  border-top-left-radius: 28px;
+  position: relative;
+  top: 0px;
+}
+
+
+
+.rounded-corner {
+  border-radius: 28px;
+}
+
+.drop-shadow {
+  box-shadow: 0 8px 12px rgba(69,70,70,0.3);
+}
+
+.icon {
+  width: 64px;
+  outline: none;
+  border: 5px solid #f8f8f8;
+  border-radius: 50%;
+}
+
+.dotted {
+  border-top: 2px dotted #ccc;
+}
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+  vertical-align: middle;
+  float: center;
+}
+
+.footer {
+  width: 100%;
+}
+
+footer > .container {
+  width: 100%;
+}
+
+.header > img {
+  position: relative;
+  width: 48px;
+}
+
+.type-2 {
+  background: 
+  radial-gradient(circle at left bottom, transparent 20px,  white 0) top left / 50% 60% no-repeat,
+  radial-gradient(circle at left top, transparent 20px,  white 0) bottom left /50% 41% no-repeat,
+  radial-gradient(circle at right bottom, transparent 20px, white 0) top right /50% 60% no-repeat,
+  radial-gradient(circle at right top, transparent 20px, white 0) bottom right /50% 41% no-repeat;
+  filter: drop-shadow(0 8px 12px rgba(69,70,70,0.3));
+  border-radius: 28px;
+
+}

@@ -1,0 +1,32 @@
+# Project Structure
+
+ ## MENU
+
+ 1. Greets User & Provides Menu of options
+
+ 2. Find Birthday Twin Villager
+    -> Enter Birthday
+    -> Call Full Villager List
+    -> Loop through array of villagers
+    -> Check for Birthday in result
+
+ 3. Find A villager by Species & Personality
+    -> show full list of villagers
+    -> click filter button to trigger  loop through array to check for chosen Species and/or Personality
+
+ 4. Find Villager by Birth Month
+    -> List of Months to choose from
+    -> Loop throug array of results to check of birth Month.
+
+ 5. Dreamies? If Possible...
+    -> Add a state of liked? 
+    -> Reference { villagerId }
+
+
+
+ body css for floating clouds
+
+    background: url(../images/bg.png);
+    font: 18px 'Work Sans';
+    color: #695a41ab;
+    animation: slide 10s linear infinite;

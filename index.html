@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel='stylesheet' href="./css/main.css"/>
+
+    <!-- jQuery Call -->
+    <script src="./js/jquery-3.6.0.js"></script>
+    <title>ACNH Birthday Twin</title>
+  </head>
+  <body class="bg-beige">
+    <!-- header starts here -->
+    <div class="header d-flex align-items-center p-3 bg-darkgreen" id="header">
+      <img src="./images/cake.png" alt="birthday cake logo">
+      <span><a href="#" class="text-white acnh-font ps-3">Birthday Twin ACNH</a></span>
+    </div>
+
+    <!-- villager search banner starts -->
+    <div class="col-12 p-3">
+      <div class="card rounded-corner mb-0 mb-0 drop-shadow" id="about">
+        <div class="bg-darkgreen px-3 py-3 text-white">
+          <h1 class="text-center mb-0" id="title-main">Birthday Twin ACNH</h1>
+        </div>
+        <!-- Banner IMAGE -->
+        <div class=" align-middle" id="populate">
+          <img class=" p-3 rounded-corner img-fluid" id="villagerPic" src="./images/banner.jfif" alt="banner image of new horizons characters"/>
+        </div>  
+      </div>
+    </div>
+          <div class="col-12 p-3">
+            <div class="bg-white rounded-corner py-3 drop-shadow" id="search">
+              <p class="px-4 blockquote text-center" id="introductions">
+                Enter your birthday below and find your ACNH Birthday Twin villager!
+              </p>
+              <div class="px-4 mb-3 d-grid gap-2 d-md-block">
+                <form METHOD="GET">
+                  <input class="mb-3 form-control rounded-corner shadow-sm" type="text" id="villagerId" placeholder="ex: January 20th">
+                  <button id="tester" type="button" class="btn rounded-corner bg-yellow text-grey acnh-font col-12 shadow-sm">Search</button>
+                </form>
+              </div>
+            </div>  
+          </div>
+
+    <!-- Menu button Items start here -->
+    <div class="col-12 p-3" id="menu-buttons">
+      <div class="type-2">
+        <div class="bg-darkgreen px-3 py-2">
+          <h6 class="py-1 mb-0 text-white text-center">Search for a Villager</h6>
+        </div>
+        <div class="row py-3 px-4 align-items-center">
+          <div class="col-3">
+            <button><img class="icon" src="./images/leafIcon.jpg" alt="animal crossing leaf icon"></button>
+          </div>
+          <div class="col-9">
+            <p class="fw-bold m-0 acnh-font">By Species & Personality</p>
+          </div>
+        </div>  
+        <div class="dotted mx-4"> </div>
+        <div class="row py-3 px-4 align-items-center">
+          <div class="col-3">
+            <button><img class="icon" src="./images/leafIcon.jpg" alt="animal crossing leaf icon"></button>
+          </div>
+          <div class="col-9">
+            <p class="fw-bold m-0 acnh-font">By Birth Month</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Note about No Twin Dates start Here -->
+    <div class="col-12 p-3" id="nodatesnote">
+      <div class=" pb-3 pt-0 px-0 rounded-corner type-2">
+        <div class="bg-darkgreen px-3 py-2">
+          <h6 class="mb-0 text-white text-center">Quick Note on Villager Birthdays </h6>
+        </div>
+        <div class="px-3 pt-3">
+          <div>
+            <p class="card-text pt-2 px-4">
+              Please note that the following dates do <span class="fw-bold">NOT</span> have a Villager Birthday :
+            </p>
+          </div>  
+          <div class="position-relative bottom-0">
+            <p class="card-text mt-3 mb-0 ps-4">April 1st - 04/01 |  October 31 - 10/31 </p>  
+            <p class="mt-1 mb-1 ps-4">December 24 - 12/24 |  February 29 - 02/29 </p>
+            <br/>
+          </div>  
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <!-- API TEST CALL -->
+    <div class="p-3 align-items-center">
+    </div>
+    <!-- FOOTER starts here -->
+    <footer class="footer m-auto bg-yellow">
+      <div class="container mt-3 py-3">
+        <span class="text-muted text-center m-auto text-center align-middle">
+          © Birthday Twin ACNH made by ADL.  All Rights Reserved. 
+        </span>
+      </div>
+    </footer>
+
+    <!-- JS Bootstrap & Popper CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="./js/twinApiCalls.js"></script>
+  </body>
+</html>
