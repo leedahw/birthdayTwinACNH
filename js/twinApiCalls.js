@@ -70,19 +70,21 @@ $( "#tester" ).click(function(){
         villagerDiv = $('<div class="d-flex flex-column-reverse p-3 bg-white rounded-corner align-items-center">');
         names.appendChild(document.createTextNode("Your Birthday Twin is " + result['name']['name-USen']+"!"));
         images.attr("src", result.image_uri);
+
+        let populateFunction = function() {
+          $('#populate').append(villagerDiv);
+          villagerDiv.append(names);
+          villagerDiv.append(images);
+         }
         
         //if statement to empty div if there is content
         if (!$.trim($('#populate').html()).length) {
          console.log("empty");
-         $('#populate').append(villagerDiv);
-         villagerDiv.append(images);
-         villagerDiv.append(names);
+         populateFunction();
         }else{
          console.log("full");
          emptyFunction();
-         $('#populate').append(villagerDiv);
-         villagerDiv.append(images);
-         villagerDiv.append(names);
+         populateFunction();
         }
       }
       executed = false;
@@ -101,19 +103,22 @@ $( "#tester" ).click(function(){
        names = document.createElement('h3');
        names.className="text-center py-2 blockquote";
        names.appendChild(document.createTextNode("Your Birthday Twin is "+twin['name']['name-USen']+"!"));
+
+       let populateFunction = function() {
+        $('#populate').append(villagerDiv);
+        villagerDiv.append(names);
+        villagerDiv.append(images);
+       }
+
        
        //if statement to eliminate continuous appending for search
        if (!$.trim($('#populate').html()).length) {
         console.log("empty");
-        $('#populate').append(villagerDiv);
-        villagerDiv.append(names);
-        villagerDiv.append(images);
+        populateFunction();
        }else{
         console.log("full");
         $('#populate').empty();
-        $('#populate').append(villagerDiv);
-        villagerDiv.append(names);
-        villagerDiv.append(images);
+        populateFunction();
        }
      });
     }

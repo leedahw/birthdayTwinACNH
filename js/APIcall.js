@@ -17,7 +17,7 @@ let emptyFunction = ( ()=> {
 
 $(document).ready(function() {
   //define all personalities
-  personalities = ["Jock","Sisterly","Normal","Cranky","Lazy","Peppy","Smug","Snooty"];
+  personalities = ["Jock","Uchi","Normal","Cranky","Lazy","Peppy","Smug","Snooty"];
 
   species_s = ["Alligator","Anteater","Bear","Bird","Bull","Cat","Chicken","Cow","Cub","Deer","Dog","Duck","Eagle","Elephant","Frog","Goat","Gorilla","Hamster", "Hippo","Horse","Kangaroo","Koala","Lion","Monkey","Mouse","Octopus","Ostrich","Penguin","Pig","Rabbit","Rhino","Sheep","Squirrel","Tiger","Wolf"];
 
@@ -43,7 +43,7 @@ $(document).ready(function() {
     $('#returned').append(button);
   }
 
-    //dynamic dom render of personality buttons
+    //dynamic dom render of species buttons
     for (i = 0 ; i < species_s.length; i++ ) {
       species = species_s[i];
       console.log(species);
@@ -65,6 +65,33 @@ $(document).ready(function() {
     personalityResults = villagers.filter(personalityFinder);
     console.log(personalityResults);
 
+    for (let i = 0; i < personalityResults.length; i++) {
+      result = personalityResults[i];
+
+      //create dom element
+      names = document.createElement('p');
+      names.className="text-center py-2 blockquote ";
+      icons = $('<img class="rounded-corner img-fluid" id="villagerimages">');
+      villagerDiv = $('<div class="col-3 p-3 bg-white rounded-corner align-items-center">');
+      names.appendChild(document.createTextNode(result['name']['name-USen']));
+      icons.attr("src", result.icon_uri);
+
+      //if statement to empty div if there is content
+      if (!$.trim($('#villagers').html()).length) {
+        console.log("empty");
+        $('#villagers').append(villagerDiv);
+        villagerDiv.append(icons);
+        villagerDiv.append(names);
+        }else{
+        console.log("full");
+        emptyFunction();
+        $('#villagers').append(villagerDiv);
+        villagerDiv.append(icons);
+        villagerDiv.append(names);
+        }
+    }
+    console.log(executed);
+    executed = false;
   });
 
     //filter by species
@@ -73,11 +100,11 @@ $(document).ready(function() {
       villagerSpecies = $(this).attr("value");
   
       //define the filter fuction based on button value
-      function speciesFinder(villagers) {
-        return (villagers.species == villagerSpecies);
+      function speciesFinder(personalityResults) {
+        return (personalityResults.species == villagerSpecies);
       }
   
-      speciesResults = villagers.filter(speciesFinder);
+      speciesResults = personalityResults.filter(speciesFinder);
       console.log(speciesResults);
 
       for (let i = 0; i < speciesResults.length; i++) {
