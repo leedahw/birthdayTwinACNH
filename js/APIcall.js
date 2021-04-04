@@ -30,32 +30,34 @@ $(document).ready(function() {
   .done(function(data) {
     //console log to check if we have all villagers in array
     villagers = data;
-    console.log(villagers); 
-    console.log(villagers[90]);
+    //console.log(villagers); 
+    //console.log(villagers[90]);
 });
 
   //dynamic dom render of personality buttons
   for (i = 0 ; i < personalities.length; i++ ) {
     personality = personalities[i];
-    console.log(personality);
-    button = $('<button class="btn btn-sm m-1 bg-yellow rounded-corner personality" value='+personality+'>'+ personality+'</button>');
+    //console.log(personality);
+    button = $('<button class="filter btn btn-sm m-1 bg-yellow rounded-corner personality" value='+personality+'>'+ personality+'</button>');
 
-    $('#returned').append(button);
+    $('#personalityReturned').append(button);
   }
 
     //dynamic dom render of species buttons
     for (i = 0 ; i < species_s.length; i++ ) {
       species = species_s[i];
-      console.log(species);
-      button = $('<button class="btn btn-sm m-1 bg-white rounded-corner species" value='+species+'>'+ species+'</button>');
+      //console.log(species);
+      button = $('<button class="filter btn btn-sm m-1 bg-yellow rounded-corner species" value='+species+'>'+ species+'</button>');
   
-      $('#returned').append(button);
+      $('#speciesReturned').append(button);
     }
 
   //filter by personality types
-  $('.personality').on('click', function(){
+  $('.personality').on('click', (e)=>{
     //check for value
-    villagerPersonality = $(this).attr("value");
+    $('#personalityReturned>button.selected').removeClass('selected');
+    $(e.target).toggleClass("selected");
+    villagerPersonality = $(e.target).attr("value");
 
     //define the filter fuction based on button value
     function personalityFinder(villagers) {
@@ -69,11 +71,11 @@ $(document).ready(function() {
       result = personalityResults[i];
 
       //create dom element
-      names = document.createElement('p');
-      names.className="text-center py-2 blockquote ";
+      names = $('<p>')
+      names.addClass("text-center blockquote");
       icons = $('<img class="rounded-corner img-fluid" id="villagerimages">');
-      villagerDiv = $('<div class="col-3 p-3 bg-white rounded-corner align-items-center">');
-      names.appendChild(document.createTextNode(result['name']['name-USen']));
+      villagerDiv = $('<div class="personalitys col-4 col-sm-3 p-3 m-2 bg-white rounded-corner align-items-center">');
+      names.append(document.createTextNode(result['name']['name-USen']));
       icons.attr("src", result.icon_uri);
 
       //if statement to empty div if there is content
@@ -94,10 +96,12 @@ $(document).ready(function() {
     executed = false;
   });
 
-    //filter by species
-    $('.species').on('click', function(){
+    //step2: filter by Species
+    $('.species').on('click', (e)=>{
       //check for value
-      villagerSpecies = $(this).attr("value");
+      $('#speciesReturned>button.selected').removeClass('selected');
+      $(e.target).toggleClass("selected");
+      villagerSpecies = $(e.target).attr("value");
   
       //define the filter fuction based on button value
       function speciesFinder(personalityResults) {
@@ -105,18 +109,27 @@ $(document).ready(function() {
       }
   
       speciesResults = personalityResults.filter(speciesFinder);
-      console.log(speciesResults);
+      console.log(speciesResults.length);
+      if (speciesResults.length==0) {
+        $('#villagers').empty();
+        $('#villagers').html("There are no "+ villagerSpecies + " villagers with this personality");
+        $
+
+      }else{
+
 
       for (let i = 0; i < speciesResults.length; i++) {
         result = speciesResults[i];
-
+        
         //create dom element
         names = document.createElement('p');
         names.className="text-center py-2 blockquote ";
         icons = $('<img class="rounded-corner img-fluid" id="villagerimages">');
-        villagerDiv = $('<div class="col-3 p-3 bg-white rounded-corner align-items-center">');
+        villagerDiv = $('<div class="col-4 col-sm-3 p-3 m-2 bg-white rounded-corner align-items-center">');
         names.appendChild(document.createTextNode(result['name']['name-USen']));
         icons.attr("src", result.icon_uri);
+
+        
         
         //if statement to empty div if there is content
         if (!$.trim($('#villagers').html()).length) {
@@ -133,8 +146,9 @@ $(document).ready(function() {
         }
         
       }
-      console.log(executed);
       executed = false;
+      console.log(executed);
+    }
     });
 
     // //filter by BirthMonth
@@ -151,8 +165,6 @@ $(document).ready(function() {
     //   console.log(monthResults);
   
     // });
-
-
 
 
 });

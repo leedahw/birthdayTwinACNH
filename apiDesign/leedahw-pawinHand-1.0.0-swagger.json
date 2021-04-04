@@ -1,0 +1,350 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Paw in Hand API to store pets available for adoption.",
+    "version" : "1.0.0",
+    "title" : "Paw In Hand",
+    "contact" : {
+      "email" : "leedahw@sheridancollege.ca"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "pets",
+    "description" : "data about pets in roster"
+  }, {
+    "name" : "user",
+    "description" : "operations about user"
+  } ],
+  "paths" : {
+    "/pets" : {
+      "get" : {
+        "tags" : [ "pets" ],
+        "summary" : "Find all pets",
+        "operationId" : "findAllPets",
+        "description" : "Remove /{petId} to get all pets in the database",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "petId",
+          "description" : "pass in a petId to retrieve specific pet",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64",
+          "minimum" : 1
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Pets"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid Input."
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "pets" ],
+        "summary" : "adds a pet to the roster",
+        "operationId" : "addPet",
+        "description" : "Adds a pet to the system",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Pet to add",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Pets"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "item created"
+          },
+          "400" : {
+            "description" : "Invalid input, object invalid"
+          }
+        }
+      }
+    },
+    "/pets/{petId}" : {
+      "get" : {
+        "tags" : [ "pets" ],
+        "summary" : "Find pet by {petId}",
+        "operationId" : "FindPetById",
+        "description" : "Returns a single Pet",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "petId",
+          "in" : "path",
+          "description" : "ID of pet to return",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Pets"
+            }
+          },
+          "400" : {
+            "description" : "Invalid ID supplied"
+          },
+          "404" : {
+            "description" : "Pet not found"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "pets" ],
+        "summary" : "Update pet with form data",
+        "operationId" : "updatePetWithForm",
+        "consumes" : [ "application/x-www-form-urlencoded" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "petId",
+          "in" : "path",
+          "description" : "ID of pet that needs update",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "name",
+          "in" : "formData",
+          "description" : "updated name of pet",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "adopter",
+          "in" : "formData",
+          "description" : "updated with username of adopter",
+          "required" : false,
+          "default" : null,
+          "type" : "string"
+        }, {
+          "name" : "adopted",
+          "in" : "formData",
+          "description" : "update adopted status of pet",
+          "required" : true,
+          "type" : "boolean"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid Input"
+          },
+          "404" : {
+            "description" : "Pet not Found"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "pets" ],
+        "summary" : "Deletes a pet",
+        "operationId" : "deletePet",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "petId",
+          "in" : "path",
+          "description" : "petId to delete",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Successful operation. No content"
+          },
+          "400" : {
+            "description" : "Invalid Id"
+          },
+          "404" : {
+            "description" : "Pet not found"
+          }
+        }
+      }
+    },
+    "/users" : {
+      "post" : {
+        "tags" : [ "users" ],
+        "summary" : "Create User",
+        "operationId" : "createUser",
+        "description" : "This can be done by logged in user",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "create user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Users"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "405" : {
+            "description" : "Invalid Input"
+          }
+        }
+      }
+    },
+    "/users/{name}" : {
+      "get" : {
+        "tags" : [ "users" ],
+        "summary" : "Find user by name",
+        "operationId" : "FindUserByName",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "description" : "name that needs to be fetched.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Users"
+            }
+          },
+          "400" : {
+            "description" : "Invalid Input"
+          },
+          "404" : {
+            "description" : "Not Found"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "users" ],
+        "summary" : "Update user",
+        "description" : "This can only be done by logged in user",
+        "operationId" : "updateUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "description" : "Updated user object",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "description" : "updated user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Users"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid name"
+          },
+          "404" : {
+            "description" : "User not Found"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "users" ],
+        "summary" : "Deletes User",
+        "description" : "This can only be done by logged in user",
+        "operationId" : "deleteUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "description" : "name that needs to be deleted",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid name"
+          },
+          "404" : {
+            "description" : "User Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Pets" : {
+      "type" : "object",
+      "required" : [ "id", "name", "adopted", "photoURL" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Ramble"
+        },
+        "adopted" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "adopter" : {
+          "$ref" : "#/definitions/Users"
+        },
+        "photoURL" : {
+          "type" : "array",
+          "xml" : {
+            "name" : "photoURL",
+            "wrapped" : true
+          },
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "Users" : {
+      "required" : [ "name", "phone", "email" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "John Doe"
+        },
+        "email" : {
+          "type" : "string",
+          "format" : "email",
+          "example" : "johndoe@gmail.com"
+        },
+        "phone" : {
+          "type" : "string",
+          "example" : "416-555-0123"
+        }
+      }
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/leedahw/pawinHand/1.0.0",
+  "schemes" : [ "https" ]
+}

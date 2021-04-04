@@ -15,7 +15,7 @@
   </head>
   <body class="bg-beige">
     <!-- header starts here -->
-    <div class="header d-flex align-items-center p-3 bg-darkgreen" id="header">
+    <div class="drop-shadow header d-flex align-items-center justify-content-center px-3 py-1 bg-darkgreen" id="header">
       <img src="./images/cake.png" alt="birthday cake logo">
       <span><a href="#" class="text-white acnh-font ps-3">Birthday Twin ACNH</a></span>
     </div>
@@ -32,19 +32,19 @@
         </div>  
       </div>
     </div>
-          <div class="col-12 p-3">
-            <div class="bg-white rounded-corner py-3 drop-shadow" id="search">
-              <p class="px-4 blockquote text-center" id="introductions">
-                Enter your birthday below and meet your Animal Crossing Birthday Twin!
-              </p>
-              <div class="px-4 mb-3 d-grid gap-2 d-md-block">
-                <form METHOD="GET">
-                  <input class="mb-3 form-control rounded-corner shadow-sm" type="text" id="villagerId" placeholder="ex: January 20th">
-                  <button id="tester" type="button" class="btn rounded-corner bg-yellow text-grey acnh-font col-12 shadow-sm">Search</button>
-                </form>
-              </div>
-            </div>  
-          </div>
+    <div class="col-12 p-3">
+      <div class="bg-white rounded-corner py-3 drop-shadow" id="search">
+        <blockquote class="px-4 blockquote text-center" id="introductions">
+          Enter your birthday below and meet your Animal Crossing Birthday Twin!
+        </blockquote>
+        <div class="px-4 mb-3 d-grid gap-2 d-md-block">
+          <form METHOD="GET">
+            <input class="mb-3 form-control rounded-corner shadow-sm" type="text" id="villagerId" placeholder="ex: January 20th">
+            <button id="tester" type="button" class="btn rounded-corner bg-yellow text-grey acnh-font col-12 shadow-sm">Search</button>
+          </form>
+        </div>
+      </div>  
+    </div>
 
     <!-- Menu button Items start here -->
     <div class="col-12 p-3" id="menu-buttons">
@@ -53,9 +53,9 @@
           <h6 class="py-1 mb-0 text-white text-center">Search for a Villager</h6>
         </div>
         <div class="row py-3 px-4 align-items-center">
-          <div class="col-3">
-            <a href="http://localhost/imm/birthdayTwinACNH/apiCall.html"><img class="icon" src="./images/leafIcon.jpg" alt="animal crossing leaf icon"></a>
-          </div>
+          <button href="http://localhost/imm/birthdayTwinACNH/apiCall.html" class="col-3">
+            <a><img class="icon" src="./images/leafIcon.jpg" alt="animal crossing leaf icon"></a>
+          </button>
           <div class="col-9">
             <p class="fw-bold m-0 acnh-font">By Species & Personality</p>
           </div>
@@ -93,16 +93,12 @@
     </div>
     </div>
 
-
-    <!-- API TEST CALL -->
-    <div class="p-3 align-items-center">
-    </div>
     <!-- FOOTER starts here -->
     <footer class="footer m-auto bg-yellow">
-      <div class="container mt-3 py-3">
-        <span class="text-muted text-center m-auto text-center align-middle">
-          © Birthday Twin ACNH made by ADL.  All Rights Reserved. 
-        </span>
+      <div class="container mt-3 py-3 text-center">
+        <span><p class="text-center align-middle my-0" id="mini-font">
+          © Birthday Twin ACNH made by ADL.  Nook Plaza is a fan-made website that claims no ownership of any intellectual property associated with Nintendo or Animal Crossing. 
+        </p></span>
       </div>
     </footer>
 

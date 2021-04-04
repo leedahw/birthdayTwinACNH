@@ -1,6 +1,6 @@
 //const villagers =;
 // const villagerPic = '';
-let result,names,icons,villagerDiv,executed;
+let result,names,icons,villagerDiv,executed,description;
 
 //define emptyFuntion to use in if statement
 let emptyFunction = ( ()=> {
@@ -65,14 +65,19 @@ $( "#tester" ).click(function(){
 
         //create dom element
         names = document.createElement('p');
-        names.className="text-center py-2 acnh-font";
+        names.className="text-center my-0 py-2 acnh-font";
+        description = document.createElement('p');
+        description.className="text-center py-0"
         images = $('<img class="rounded-corner img-fluid" id="villagerimages">');
         villagerDiv = $('<div class="d-flex flex-column-reverse p-3 bg-white rounded-corner align-items-center">');
         names.appendChild(document.createTextNode("Your Birthday Twin is " + result['name']['name-USen']+"!"));
+        description.appendChild(document.createTextNode("They are a "+result.species+" villager with a "+result.personality+" personality!"));
         images.attr("src", result.image_uri);
 
         let populateFunction = function() {
           $('#populate').append(villagerDiv);
+          
+          villagerDiv.append(description);
           villagerDiv.append(names);
           villagerDiv.append(images);
          }
@@ -88,24 +93,28 @@ $( "#tester" ).click(function(){
         }
       }
       executed = false;
-    }else{
+    }else if (birthdaytwin.length == 1) {
+      console.log(birthdaytwin.length);
       $('#populate').empty();
       //When villagers returns only ONE twin
       //for each element in array, create HTML elements that will be appended in div
      $.each(birthdaytwin, function(index, twin) {
-       console.log(twin.birthday);
-       console.log(twin.image_uri);
 
        //create dom elements
-       villagerDiv = $('<div class="p-3 d-flex flex-column-reverse bg-white rounded-corner col-sm-3">');
+       villagerDiv = $('<div class="p-3 me-0 d-flex align-middle flex-column-reverse bg-white rounded-corner">');
        images = $('<img class="rounded-corner img-fluid" id="villagerimages">');
        images.attr("src", twin['image_uri']);
        names = document.createElement('h3');
-       names.className="text-center py-2 blockquote";
+       description = document.createElement('p');
+       description.className="text-center py-0"
+       names.className="text-center my-0 py-2 blockquote";
        names.appendChild(document.createTextNode("Your Birthday Twin is "+twin['name']['name-USen']+"!"));
+       description.appendChild(document.createTextNode("They are a "+twin.species+" villager with a "+twin.personality+" personality!"));
 
        let populateFunction = function() {
         $('#populate').append(villagerDiv);
+        
+        villagerDiv.append(description);
         villagerDiv.append(names);
         villagerDiv.append(images);
        }
@@ -121,6 +130,17 @@ $( "#tester" ).click(function(){
         populateFunction();
        }
      });
+    }else{
+      console.log(birthdaytwin.length);
+      villagerDiv = $('<div class="p-3 me-0 d-flex align-middle flex-column-reverse bg-white rounded-corner">');
+      
+      let notice = document.createElement('p');
+       notice.className="text-center py-2";
+      notice.appendChild(document.createTextNode("There is no twin with your birthday  :("));
+
+      $('#populate').empty();
+      villagerDiv.append(notice);
+      $('#populate').append(villagerDiv);
     }
 
   })

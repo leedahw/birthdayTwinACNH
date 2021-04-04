@@ -23,6 +23,10 @@ button {
   background-color: transparent;
 }
 
+a {
+  text-decoration: none;
+}
+
 
 /* FONT */
 .acnh-font {
@@ -56,9 +60,11 @@ button {
 
 
 
+#logo {
+  width: 48px;
+}
 
-
-#header > span > a {
+#header > div > span > a {
   text-decoration: none;
 }
 
@@ -82,6 +88,15 @@ button {
   width: 100%;
 }
 
+#tester:hover {
+  background-color: #fcd588;
+}
+
+#tester:active {
+  transform: scale(0.96);
+  transition: all .3s ease;
+}
+
 #menu-buttons > div > div {
   border-top-right-radius: 28px;
   border-top-left-radius: 28px;
@@ -94,7 +109,23 @@ button {
   top: 0px;
 }
 
+#mini-font {
+  font-size: 10px!important;
+}
 
+.filter:hover {
+  background-color: white;
+}
+
+.filter:active {
+  background-color: white;
+  transform: scale(0.96);
+  transition: all .3s ease;
+}
+
+.selected {
+  background-color: white;
+}
 
 .rounded-corner {
   border-radius: 28px;
