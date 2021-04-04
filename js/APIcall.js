@@ -73,9 +73,11 @@ $(document).ready(function() {
       //create dom element
       names = $('<p>')
       names.addClass("text-center blockquote");
-      icons = $('<img class="rounded-corner img-fluid" id="villagerimages">');
-      villagerDiv = $('<div class="personalitys col-4 col-sm-3 p-3 m-2 bg-white rounded-corner align-items-center">');
+      icons = $('<img class="rounded-corner img-fluid villagerimages">');
+      birthdate = $('<p class=" position-relative top-0 left-0 m-1">');
+      villagerDiv = $('<div class="personalitys col-md-3 col-lg-2 p-5 mx-3 my-3 bg-white rounded-corner align-items-center villager-shadow">');
       names.append(document.createTextNode(result['name']['name-USen']));
+      birthdate.append(document.createTextNode(result.birthday));
       icons.attr("src", result.icon_uri);
 
       //if statement to empty div if there is content
@@ -84,16 +86,20 @@ $(document).ready(function() {
         $('#villagers').append(villagerDiv);
         villagerDiv.append(icons);
         villagerDiv.append(names);
+        villagerDiv.append(birthdate);
         }else{
         console.log("full");
         emptyFunction();
-        $('#villagers').append(villagerDiv);
+        $('#villagers').append(villagerDiv);      
         villagerDiv.append(icons);
         villagerDiv.append(names);
+        villagerDiv.append(birthdate);
+      
         }
     }
     console.log(executed);
     executed = false;
+
   });
 
     //step2: filter by Species
@@ -113,8 +119,6 @@ $(document).ready(function() {
       if (speciesResults.length==0) {
         $('#villagers').empty();
         $('#villagers').html("There are no "+ villagerSpecies + " villagers with this personality");
-        $
-
       }else{
 
 
@@ -125,8 +129,10 @@ $(document).ready(function() {
         names = document.createElement('p');
         names.className="text-center py-2 blockquote ";
         icons = $('<img class="rounded-corner img-fluid" id="villagerimages">');
-        villagerDiv = $('<div class="col-4 col-sm-3 p-3 m-2 bg-white rounded-corner align-items-center">');
+        birthdate = $('<p class=" position-relative top-0 left-0 m-1">');
+        villagerDiv = $('<div class="col-md-3 bg-white p-5 mx-auto my-5 rounded-corner align-items-center">');
         names.appendChild(document.createTextNode(result['name']['name-USen']));
+        birthdate.append(document.createTextNode(result.birthday));
         icons.attr("src", result.icon_uri);
 
         
@@ -135,14 +141,18 @@ $(document).ready(function() {
         if (!$.trim($('#villagers').html()).length) {
          console.log("empty");
          $('#villagers').append(villagerDiv);
+         villagerDiv.append(birthdate);
          villagerDiv.append(icons);
          villagerDiv.append(names);
+         
         }else{
          console.log("full");
          emptyFunction();
          $('#villagers').append(villagerDiv);
+         villagerDiv.append(birthdate);
          villagerDiv.append(icons);
          villagerDiv.append(names);
+         
         }
         
       }
@@ -150,21 +160,4 @@ $(document).ready(function() {
       console.log(executed);
     }
     });
-
-    // //filter by BirthMonth
-    // $('.birthMonth').on('click', function(){
-    //   //check for value
-    //   villagerMonth = $(this).attr("value");
-  
-    //   //define the filter fuction based on button value
-    //   function monthFinder(villagers) {
-    //     return (villagers.species == villagerMonth);
-    //   }
-  
-    //   mnthResults = villagers.filter(monthFinder);
-    //   console.log(monthResults);
-  
-    // });
-
-
 });
