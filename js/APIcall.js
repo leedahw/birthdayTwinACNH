@@ -130,7 +130,7 @@ $(document).ready(function() {
         names.className="text-center py-2 blockquote ";
         icons = $('<img class="rounded-corner img-fluid" id="villagerimages">');
         birthdate = $('<p class=" position-relative top-0 left-0 m-1">');
-        villagerDiv = $('<div class="col-md-3 bg-white p-5 mx-auto my-5 rounded-corner align-items-center">');
+        villagerDiv = $('<div class="col-md-3 bg-white p-5 mx-3 my-5 rounded-corner align-items-center">');
         names.appendChild(document.createTextNode(result['name']['name-USen']));
         birthdate.append(document.createTextNode(result.birthday));
         icons.attr("src", result.icon_uri);
@@ -141,17 +141,17 @@ $(document).ready(function() {
         if (!$.trim($('#villagers').html()).length) {
          console.log("empty");
          $('#villagers').append(villagerDiv);
-         villagerDiv.append(birthdate);
          villagerDiv.append(icons);
          villagerDiv.append(names);
+         villagerDiv.append(birthdate);
          
         }else{
          console.log("full");
          emptyFunction();
          $('#villagers').append(villagerDiv);
-         villagerDiv.append(birthdate);
          villagerDiv.append(icons);
          villagerDiv.append(names);
+         villagerDiv.append(birthdate);
          
         }
         
